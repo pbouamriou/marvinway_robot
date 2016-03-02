@@ -11,15 +11,24 @@ Installer tout de meme la toolchain Arduino dans le répertoire /opt car ça per
 
 ### Compilation ###
 
-_Compilation du programme de test sous linux_
+_Compilation du programme de test blink sous linux_
 
 ~~~{.sh}
-cd src/test
+cd src/test_blink
 ./configure
 (cd build && cmake )
 ~~~
 
 Voila c'est compilé, un fichier blink.hex est disponible sous build/blink
+
+il est meme possible de produire et installer le programme grâce à cmake (programme test_blink par example) :
+
+~~~{.sh}
+cd src/test_blink
+./configure
+(cd build && cmake blink-upload )
+~~~
+
 
 ### Test du programme ###
 
