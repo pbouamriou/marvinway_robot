@@ -2309,7 +2309,7 @@ if(NOT ARDUINO_FOUND AND ARDUINO_SDK_PATH)
 
     find_file(ARDUINO_LIBRARIES_PATH
         NAMES libraries
-        PATHS ${ARDUINO_SDK_PATH}/avr
+        PATHS ${ARDUINO_SDK_PATH}/avr ${ARDUINO_SDK_PATH}/hardware/teensy/avr
         DOC "Path to directory containing the Arduino libraries.")
 
     find_file(ARDUINO_LIBRARIES_PATH_DEF
@@ -2414,8 +2414,8 @@ if(NOT TEENSY_FOUND)
     register_hardware_platform(${ARDUINO_SDK_PATH}/hardware/teensy/avr)
 
     find_program(TEENSY_LOADER_PROGRAM
-        NAMES teensy_loader_cli
-        PATHS ${ARDUINO_SDK_PATH} ${ARDUINO_SDK_PATH}/avr
+        NAMES teensy
+        PATHS ${ARDUINO_SDK_PATH} ${ARDUINO_SDK_PATH}/avr ${ARDUINO_SDK_PATH}/hardware/tools
         NO_DEFAULT_PATH)
 
     if(TEENSY_LOADER_PROGRAM)
