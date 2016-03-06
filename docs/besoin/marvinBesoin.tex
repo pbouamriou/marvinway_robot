@@ -1,0 +1,115 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+ 
+\begin{document}{\bf Le Besoin de Marvin} 
+
+\section{Comment faire pour donner vie à Marvin}
+
+\begin{itemize}
+\item Mangez => Batterie
+\item Digérer => Carte Puissance
+\item Tenir en équilibre => Carte Moteur
+\item Découvrir son environment => Carte Moteur
+\item être intelligent => BeagleBone
+\end{itemize}
+
+C'est moi dany la star en électronique.
+Bah non tu t'appelles philippe maintenant
+
+
+\section{Détails Technique}
+
+    \begin{itemize}
+    	\item Trouver une batterie pas trop lourdes (Batterie LiPo-Succion)
+    	\item Trouver ou la positionner sur le schéma mécanique
+    	\item Gestion de la décharge de la batterie (LiPo-Succion Algo)
+    	\item Carte de puissance: Son rôle
+    	\begin{itemize}
+        	\item Charger une batterie
+        	\item Délivrer les différentes tensions aux différentes cartes.
+        	\item Faire les mesures de courant
+        	\item Gère le fait de pouvoir alimenter => v5 (surtout si c'est fait par un noob de l'électronique
+    	\end{itemize}
+    	\item Carte Moteurs : Son rôle
+    	\begin{itemize}
+        	\item Piloter les moteurs (Pont en H, piloté par la Teensy)
+        	\item Filtrage de Kaalman
+        	\item Controle les capteurs (Position Angulaire)
+        	\item Execute les commandes envoyé par le cerveau(Vitesse RoueG, Vitesse RoueD)
+        	\item Récupérer la position des roues (Optionnel parce que plus cher) => v4 (Parce que la V3 marche pas)
+        	\item Autre : Trouver la réponse à la vie l'univers et tout ! => Revenez dans quelques Milliard d'années
+    	\end{itemize}
+    	\item  Beagleboned+Shield
+    	\begin{itemize}
+        	\item Envoi des consignes (ordre moteur), supervision des données remontées par les différentes cartes (gyro, charge de la batterie),
+        	\item Réception des ordres d'une (Wiimote, Smartphone...)
+        	\item Interface Web de Debug (
+            	\begin{itemize}
+            		\item Voir l'état des capteurs en live
+            		\item Voir l'état des batteries
+            		\item Voir l'équilibre de Marvin
+            		\item Autre données intérréssantes
+            		\item  Commande de Base avancer, reculer, Standby
+            		\item Voir la Webcam(v3)
+            	\end{itemize}
+        	\item Module sonore pour faire Coin ! et autre je suis déprimé (v42)
+        	\item Pilotage de deux cerveau moteur(Panen-Tilt)(v4)
+        	\item Pilotage de la caméra(v3)
+  	\end{itemize}
+    \end{itemize}
+    Détails: On alimente ls cartes moteurs et la Shield avec la carte de puissance. La beaglebone sera alimenté par la Shield
+\section{Les centres d'intérets de chacun}
+
+\begin{itemize}
+\item Guy Super Canard: 
+    \begin{itemize}
+    \item Faire du Linux
+    \item Haut Niveau (Vers l'infini et l'au delà)
+    \item Il est Open (Source ?)
+    \end{itemize}
+\item Dany:
+    \begin{itemize}
+    \item bas niveau (c'est petit)
+    \item Partie Bootloader (Donne des coups de pied pour démarrer)
+    \item => Passe par le BUS CAN Réalisé côté Shield Le But étant de pouvoir flasher rapidement les autres carte avec une interface unique
+    \end{itemize}
+\item Philippe:
+    \begin{itemize}
+    \item Les Problèmes Et-les-Chroniques de Marvin Analogique et Numéraire (Voir Calendaire) On est pas sur le calendrier Maya il est fini
+    \item Bas niveau voir proche du centre de la terre
+    \end{itemize}
+\item  Nicolas:
+    \begin{itemize}
+    \item Les problèmes ÉleChronique de Marvin (On va faire sauter les fusibles à Dany !)
+    \item Filtrage de Kaalman (Mais besoin d'aide ça sembe compliqué il y a des maths)
+    \end{itemize}
+\end{itemize}
+
+\section{Kifékoi}
+\begin{itemize}
+\item Dany : 
+    \begin{itemize}
+   \item Carte extension Beaglebone(Shield)
+   \end{itemize}
+\item Guy:
+   \begin{itemize}
+   \item Mettre en place un linux => BeagleBone
+   \item installer un Serveur NodeJs(ou autre si tu trouve mieux) => Sur le linux Beaglebone
+   \item on veut des sous Pour me soudoyer il faut minimun 20 euros et 1 Bière
+   \end{itemize}
+\item Philippe:
+    \begin{itemize}
+    \item Concevoir la carte de puissance (ça marchera du premier coup biensûr)
+    \item concevoir la carte moteur
+    \end{itemize}
+\item Nicolas:
+    \begin{itemize}
+    \item Concevoir la carte de puissance et la tester (ça marchera du premier coup biensûr)
+    \item Concevoir la carte Moteur
+    \end{itemize}
+\end{itemize}
+\end{document}
