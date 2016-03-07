@@ -206,8 +206,8 @@ Lors de la décharge on s'aperçoit que le courant est inversé voir Figure~\ref
 
 Durant la décharge on observe que la tension du condensateur diminue Figure~\ref{courbeCondensateur} p~\pageref{courbeCondensateur}.
 \begin{figure}
-\begin{center}
-\begin{tikzpicture}[xmin=0,xmax=16,ymin=-5,ymax=5]
+   \begin{center}
+      \begin{tikzpicture}[xmin=0,xmax=16,ymin=-5,ymax=5]
    	  \axes
    	  %\draw [very thin, gray] (0,0) grid[step=0.2] (4.4,4.2);
    	  \draw[color=red] [domain=0:8, smooth] plot (\x,{4/(\x+1)-0.4});
@@ -222,9 +222,9 @@ Durant la décharge on observe que la tension du condensateur diminue Figure~\re
    	  \draw (4,0) node [below] {$charge$};
 	  \fill[color=yellow!70, opacity=0.5] (8,-0.1) rectangle (16,0.1);
           \draw (12,0) node [below] {$decharge$};
-	\end{tikzpicture}
-	\label{courbeCondensateur}
-      \caption{Courbe d'intensité de charge}
+       \end{tikzpicture}
+       \caption{Courbe d'intensité de charge}
+       \label{courbeCondensateur}
    \end{center}
 \end{figure} 
 
