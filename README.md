@@ -15,7 +15,7 @@ Pour permettre à cmake d'installer votre programme sur la teensy
 
 Executez simplement les commandes suivantes depuis le dépot marvin
 
-_Installation de teensy_loader_cli_
+_Installation de teensy_loader_cli
 ~~~{.sh}
 cd src/teensyLoaderCli/
 chmod 755 teensyLoaderCli.sh # si nécéssaire
