@@ -63,7 +63,7 @@ void setup()
    pinMode(LED_BUILTIN, OUTPUT);
    pinMode(pwm, OUTPUT);
    //analogWriteFrequency(pwm, 187500);
-   analogWriteFrequency(pwm, 46875);
+   //analogWriteFrequency(pwm, 46875);
    digitalWrite(LED_BUILTIN, HIGH);
    Serial.begin(9600);
 } 
