@@ -228,8 +228,81 @@ Durant la décharge on observe que la tension du condensateur diminue Figure~\re
    \end{center}
 \end{figure} 
 
+\section{Le transistor MOFSET}
 
+Le Mofset est un transistor différent du transistor bipolaire car il est piloté en tension (le bipolaire étant piloté en courant). De plus le transistor MOFSET
+consomme peu d'énergie (du moins quand il est pas sans cesse en commutation).
+En mode non commuté, il se comporte comme une résistance variable.
 
+Le transistor MOFSET existe en 4 déclinaisons :
+\begin{itemize}
+  \item Le MOFSET à canal N à enrichissement (Figure \ref{mofsetNenri}). Lorsque la tension $V_{TH}$ est suppérieure au seuil $V_{TH}$, le MOFSET est passant.
+  \item Le MOFSET à canal P à enrichissement (Figure \ref{mofsetPenri}). Lorsque la tension $V_{TH}$ est inférieure au seuil $V_{TH}$ ($V_{TH}$ étant une tension négative), le MOFSET est passant.
+  \item Le MOFSET à canal N à appauvrissement (Figure \ref{mofsetNappau}). Lorsque la tension $V_{TH}$ est inférieur au seuil $V_{TH}$, le MOFSET est passant.
+  \item Le MOFSET à canal P à appauvrissement (Figure \ref{mofsetPappau}). Lorsque la tension $V_{TH}$ est suppérieure au seuil $V_{TH}$ ($V_{TH}$ étant une tension négative), le MOFSET est passant.
+\end{itemize}
+
+Les MOFSETS sont souvent utilisés pour commuter des circuits de plusieurs ampères. On nomme ces MOFSETS, MOFSETS de puissance.
+Malheureusement ces MOFSETS ne sont pas totallement adaptés aux micro-controlleurs, car les niveaux logiques des micro-controlleurs sont plus bas que ceux des MOFSETS
+de puissance. Cela à pour conséquence, de ne pas faire fonctionner le MOFSET en mode commuté. Ainsi, la résistance aux bornes du MOFSET ($RDS_{on}$) n'est pas au plus bas.
+
+C'est pour cette raison qu'une famille de MOFSET a été créer pour s'adapter aux niveaux logiques des micro-controlleurs. Cette famille se nomme «logic level».
+
+Une autre problématique avec les transistors MOFSETS est de permettre une commutation rapide à hautes fréquences (au delà de 20kHz). Il s'avère qu'une commutation rapide
+n'est possible que lorsque le circuit de commande fourni suffisement de courant pour «accélérer la commutation». Bien souvent les circuits de commande sont des
+micro-controlleurs qui ne permettent pas fournir le courant demandé par le transistor. La commutation est alors ralenti.
+
+\begin{figure}
+   \begin{center}
+      \begin{circuitikz}
+      % Equivalent circuit:
+         \begin{scope}[scale=0.8]
+            \draw (0,0) to[Tnigfete,n=mosn] (0,2);
+         \end{scope}
+      \end{circuitikz}
+      \caption{Mofset à canal N à enrichissement}
+      \label{mofsetNenri}
+   \end{center}
+\end{figure}
+
+\begin{figure}
+   \begin{center}
+      \begin{circuitikz}
+      % Equivalent circuit:
+         \begin{scope}[scale=0.8]
+            \draw (0,0) to[Tpigfete,n=mosp] (0,2);
+         \end{scope}
+      \end{circuitikz}
+      \caption{Mofset à canal P à enrichissement}
+      \label{mofsetPenri}
+   \end{center}
+\end{figure}
+
+\begin{figure}
+   \begin{center}
+      \begin{circuitikz}
+      % Equivalent circuit:
+         \begin{scope}[scale=0.8]
+            \draw (0,0) to[Tnigbt,n=mosn] (0,2);
+         \end{scope}
+      \end{circuitikz}
+      \caption{Mofset à canal N à appauvrissement}
+      \label{mofsetNappau}
+   \end{center}
+\end{figure}
+
+\begin{figure}
+   \begin{center}
+      \begin{circuitikz}
+      % Equivalent circuit:
+         \begin{scope}[scale=0.8]
+            \draw (0,0) to[Tpigbt,n=mosp] (0,2);
+         \end{scope}
+      \end{circuitikz}
+      \caption{Mofset à canal P à appauvrissement}
+      \label{mofsetPappau}
+   \end{center}
+\end{figure}
 
 
 \end{document}
