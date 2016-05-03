@@ -1286,12 +1286,12 @@ function(setup_arduino_bootloader_upload TARGET_NAME BOARD_ID PORT LOADER_ID AVR
     # Determine loader from settings
     if (LOADER_ID MATCHES "halfkay")
         # Teensy halfkay loader
-        #add_custom_target(${UPLOAD_TARGET}
-        #                 ${TEENSY_LOADER_PROGRAM} -mmcu=${${BOARD_ID}.build.mcu} -w "${TARGET_PATH}.hex"
-        #                 DEPENDS ${TARGET_NAME})
         add_custom_target(${UPLOAD_TARGET}
-                         ${TEENSY_LOADER_PROGRAM} -w "${TARGET_PATH}.hex"
+                         ${TEENSY_LOADER_PROGRAM} -mmcu=${${BOARD_ID}.build.mcu} -w "${TARGET_PATH}.hex"
                          DEPENDS ${TARGET_NAME})
+	#add_custom_target(${UPLOAD_TARGET}
+	#                 ${TEENSY_LOADER_PROGRAM} -w "${TARGET_PATH}.hex"
+	#                 DEPENDS ${TARGET_NAME})
     else()
         # AVRDUDE loader
         list(APPEND AVRDUDE_ARGS '-Uflash:w:"${TARGET_PATH}.hex":i')
@@ -2414,7 +2414,7 @@ if(NOT TEENSY_FOUND)
     register_hardware_platform(${ARDUINO_SDK_PATH}/hardware/teensy/avr)
 
     find_program(TEENSY_LOADER_PROGRAM
-        NAMES teensy
+        NAMES teensy_loader_cli
         PATHS ${ARDUINO_SDK_PATH} ${ARDUINO_SDK_PATH}/avr ${ARDUINO_SDK_PATH}/hardware/tools
         NO_DEFAULT_PATH)
 
