@@ -9,6 +9,19 @@ Suivre les instructions [Débuter avec teensy](https://openclassrooms.com/course
 
 Installer tout de meme la toolchain Arduino dans le répertoire /opt car ça permettra à cmake de trouver automatiquement la toolchain.
 
+### Installation de teensy_loader_cli
+
+Pour permettre à cmake d'installer votre programme sur la teensy
+
+Executez simplement les commandes suivantes depuis le dépot marvin
+
+_Installation de teensy_loader_cli_
+~~~{.sh}
+cd src/teensyLoaderCli/
+chmod 755 teensyLoaderCli.sh # si nécéssaire
+./teensyLoaderCli.sh
+~~~
+
 ### Compilation ###
 
 _Compilation du programme de test blink sous linux_
