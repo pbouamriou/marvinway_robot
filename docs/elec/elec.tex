@@ -7,7 +7,7 @@
 \usepackage{tikz}
 \usepackage{circuitikz}
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
-
+\usepackage{url}
 
 \tikzset{
 xmin/.store in=\xmin, xmin/.default=-3, xmin=-3,
@@ -322,5 +322,40 @@ Le schéma \ref{driverInverseur} présente le moyen de piloter un mofset mais av
       \label{driverInverseur}
    \end{center}
 \end{figure}
+
+\section{Les Bobines}
+
+Les bobines (appelées aussi autoinductances, solénoïde ou self) est constitué d'un enroulement de fil conducteur éventuellement autour d'un noyau en matériau férromagnétique \cite{BobineWiki}.
+
+à compléter
+- Pilotage de courant 
+- Filtre
+
+\section{les moteurs}
+\subsection{Introduction}
+
+Il existe différents types de moteur (thermique, electrique, stirling...), cette section va se concentrer sur les moteur électriques plus précisément les moteurs à courant continu.
+
+Un moteur permet de transformer l'énergie électrique en énergie mécanique. l'avantage du moteur électrique par rapport a un moteur thermique est que sont rendement est bien meilleur (de l'ordre de 80% pour un moteur électrique contre 40%). Cependant malgré un très bon rendement  
+
+\subsection{À quoi ça sert un moteur ?}
+
+Il s'agit d'un composant de \textbf{conversion d'énergie électrique en énergie mécanique de rotation}. A contrario une dynamo fonctionne sur le principe d'un moteur inversé puisqu'il s'agit d'un composant de conversion d'énérgie mécanique en énergie électrique.
+
+\subsection{Comment fonctionne un moteur à courant continu?}
+
+Un moteur CC (moteur à courant continu) est composé d'un \textbf{stator} et d'un \textbf{rotor} (c'est une simplification de la réalité il y a quelques autres composants). 
+Le \textbf{stator} est composé de deux ou plus de bobines fixées à la carcasse du moteur, lorsque les bobines vont être traversées par un courant elles vont alors exercer un champ magnétique sur le \textbf{rotor}.  
+
+\section{Porte Logiques}
+
+\section{Bascule R/S}
+
+\section{NE555}
+
+
+\cite{MoteurCCEskimon}
+\bibliographystyle{plain}
+\bibliography{elec}
 
 \end{document}

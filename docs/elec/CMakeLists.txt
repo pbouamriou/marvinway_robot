@@ -9,4 +9,4 @@ SET(LATEX_OUTPUT_PATH build)
 INCLUDE(UseLATEX.cmake)
 
 #Génération de la liste des fichiers sources
-add_latex_document(elec.tex)
+add_latex_document(elec.tex BIBFILES elec.bib)
