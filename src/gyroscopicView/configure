@@ -1,0 +1,12 @@
+#!/bin/bash    
+sudo apt-get install doxygen
+sudo apt-get install python-pip
+sudo pip install -U catkin_tools
+git submodule update --init --recursive
+cd serial
+source /opt/ros/hydro/setup.bash
+export catkin_DIR=/opt/ros/hydro/share/catkin
+#if you want to install it in /usr/local you have to comment makefile CMAKE_INSTALL_PREFIX
+sudo make install_deps
+make
+sudo make install
