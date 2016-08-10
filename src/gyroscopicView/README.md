@@ -3,7 +3,7 @@ Affiche une vue openGL simple représentant l'orientation du gyroscope en tant r
 
 ## Branchement de la carte Arduino au MPU_6050
 
-![MPU_6050](schemaMPU6050.svg)
+![](schemaMPU6050.svg)
 
 ## Calibrage du MPU_6050 ##
 
@@ -34,7 +34,7 @@ mpu.setXGyroOffset(27);
 mpu.setYGyroOffset(7);
 mpu.setZGyroOffset(2);
 mpu.setZAccelOffset(1340); // 1688 factory default for my test chip
-~~
+~~~
 
 ## Compilation et Upload du programme pour récupérer les angles d'eulers
 ~~~{.sh}
