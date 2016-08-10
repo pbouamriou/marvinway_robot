@@ -3,7 +3,7 @@ Affiche une vue openGL simple représentant l'orientation du gyroscope en tant r
 
 ## Branchement de la carte Arduino au MPU_6050
 
-![](schemaMPU6050.svg)
+![](schemaMPU6050.png)
 
 ## Calibrage du MPU_6050 ##
 
