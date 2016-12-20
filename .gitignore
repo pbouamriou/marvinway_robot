@@ -3,4 +3,7 @@ build
 *.log
 *.aux
 *.orig
+*.wlf
+*.mti
+*.mpf
 work/

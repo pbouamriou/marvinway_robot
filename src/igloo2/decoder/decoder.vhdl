@@ -44,7 +44,7 @@ architecture behaviour of decoder is
 begin
    reset : process(reset_i) is
    begin
-   if rising_edge(reset_i) then
+   if falling_edge(reset_i) then
       addr_bus_o <= (others => '0');
       data_bus_io <= (others => '0');
       rw_o <= '0';
