@@ -21,6 +21,7 @@ add wave -radix hexadecimal data_bus_io
 add wave -radix hexadecimal servomoteur_status 
 add wave -radix hexadecimal servomoteur_frequence 
 add wave -radix hexadecimal servomoteur_angle 
+add wave -radix hexadecimal servomoteur_dutyCycle 
 
 add wave write_i 
 
@@ -68,18 +69,23 @@ force cs_servo_i  1
 run 100ns
  
  
-ecritureAdresse 5 25000
-ecritureAdresse 6 6535
-
-run 50us
-run 50us
-ecritureAdresse 1 50000
-ecritureAdresse 2 6535
-
-run 50us
-run 50us
+ecritureAdresse 4 1
 ecritureAdresse 5 50000
-ecritureAdresse 6 12000
+ecritureAdresse 6 180
+
+run 50us
+run 50us
+ecritureAdresse 0 1
+ecritureAdresse 1 50000
+ecritureAdresse 2 90 
+
+ecritureAdresse 4 0
+
+run 50us
+run 50us
+ecritureAdresse 4 1
+ecritureAdresse 5 25000
+ecritureAdresse 6 0
 
 force cs_servo_i 0
 run 50us

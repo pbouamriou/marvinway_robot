@@ -37,6 +37,8 @@ architecture behaviour of servomoteur is
 	signal servomoteur_frequence : array_data_reg;
 	signal servomoteur_angle : array_data_reg;
 	
+	signal servomoteur_dutyCycle : array_data_reg;
+	
 	signal pwm_freq_select  :  INTEGER RANGE 0 TO 100_000:= 100_000;
 	signal duty_select :  STD_LOGIC_VECTOR(15 downto 0) ;
 	 
@@ -80,6 +82,7 @@ begin
 			servomoteur_status    <= (others => (others => '0')); 
 			servomoteur_frequence <= (others => (others => '1')); 
 			servomoteur_angle     <= (others => (others => '0')); 
+			servomoteur_dutyCycle <= (others => (others => '0')); 
 		end if;
 		if rising_edge (clk_i)  then
 			if cs_servo_i = '1' then			
@@ -100,12 +103,19 @@ begin
 						when "00" =>
 							 servomoteur_status(offset_servomoteur) <= data_bus_io(15 downto 0) ;	
 						when "01" =>
-							 servomoteur_frequence(offset_servomoteur) <= data_bus_io(15 downto 0) ;	
-						when "10" =>                     
-							 servomoteur_angle(offset_servomoteur) <= data_bus_io(15 downto 0)  ;
-						when others =>	
-					end case;
+								servomoteur_frequence(offset_servomoteur) <= data_bus_io(15 downto 0) ;	
+						when "10" =>  
+								servomoteur_angle(offset_servomoteur) <= data_bus_io(15 downto 0)  ;
+						when others =>		
+					end case;					
 				end if;
+				--conversion consignes
+				if servomoteur_status(offset_servomoteur)(0) = '0' then  
+					servomoteur_dutyCycle(offset_servomoteur) <= (others => '0') ;	
+				end if;
+				
+				servomoteur_dutyCycle(offset_servomoteur)(15 downto 5) <= servomoteur_angle(offset_servomoteur)(10 downto 0);				
+				
 			else
 				data_bus_io <= (others => 'Z');	
 			end if;
@@ -114,7 +124,7 @@ begin
 	
 	not_reset <= not reset_i;
 	pwm_freq_select <= to_integer( unsigned( servomoteur_frequence(offset_servomoteur)));
-	duty_select <=   servomoteur_angle(offset_servomoteur);
+	duty_select <= servomoteur_dutyCycle(offset_servomoteur) + "0000110011001100";
 	
 	premierePwm : pwm
 	generic map(
