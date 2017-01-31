@@ -13,30 +13,38 @@ set UserTimeUnit ns
 #**************************************
 restart -force -nowave 
  
-add wave rw_edge 
+# add wave clk_i
+add wave cs_servo_i 
 add wave -radix hexadecimal addr_bus_i  		
-add wave -radix hexadecimal data_bus_io   
-
+add wave -radix hexadecimal data_bus_io 
 
 add wave -radix hexadecimal servomoteur_status 
 add wave -radix hexadecimal servomoteur_frequence 
-add wave -radix hexadecimal servomoteur_angle 	
+add wave -radix hexadecimal servomoteur_angle 
 
+add wave write_i 
+
+add wave servomoteur_o
 
 proc ecritureAdresse {addresse  donnee} {
-   force addr_bus_i [format {x"%X"} $addresse]	 
-   force data_bus_io [format {x"%X"} $donnee]
-   force rw_i 1
+   force addr_bus_i [format {x"%X"} $addresse]	
+   force data_bus_io [format {x"%X"} $donnee] 
+   run 100ns  
+   # force write_i 0	
    run 100ns	
-   force rw_i 0 
-   run 200ns
+   force write_i 1 
+   run 100ns  
+   force write_i 0	
+   run 200ns 
+   noforce data_bus_io
 }
 proc lectureAdresse {addresse } {
-   force addr_bus_i [format {x"%X"} $addresse]
    noforce data_bus_io
-   force rw_i 0
+   force addr_bus_i [format {x"%X"} $addresse]
    run 100ns	
-   force rw_i 1
+   force read_i 1
+   run 100ns	
+   force read_i 0
    run 200ns	
 } 
 
@@ -50,40 +58,28 @@ force reset_i 1
 #Force Clk à 0 à l'instant présent t puis à 1 à l'instant t+10ns. Ce cycle est répété toutes les 20ns.
 force clk_i 0 0, 1 {10 ns} -r 20ns 
 
-force cs_servo_i  1		
-force addr_bus_i  X"0"		
-force data_bus_io X"0"
-noforce data_bus_io
+force cs_servo_i 0	
+force addr_bus_i  X"0"	
+force write_i 0	
+force read_i 0 
 run 500ns
 force reset_i 0 
+force cs_servo_i  1	
+run 100ns
+ 
+ 
+ecritureAdresse 5 25000
+ecritureAdresse 6 6535
 
-puts " Ecriture servomoteur 0 "
-ecritureAdresse 0 3	
-ecritureAdresse 1 3	
-ecritureAdresse 2 3	
+run 50us
+run 50us
+ecritureAdresse 1 50000
+ecritureAdresse 2 6535
 
-puts " Ecriture servomoteur 1 "
-ecritureAdresse 4 5	
-ecritureAdresse 5 5	
-ecritureAdresse 6 5	
+run 50us
+run 50us
+ecritureAdresse 5 50000
+ecritureAdresse 6 12000
 
-
-puts " Ecriture servomoteur 2 "
-ecritureAdresse 8 8	
-ecritureAdresse 9 8
-ecritureAdresse 10 8
-
-
-# puts " Lecture servomoteur 0 "
-# lectureAdresse 0
-# puts " Donnees attendu 3"       
-# puts " Donnees lu      [examine -decimal data_bus_io]"
-# lectureAdresse 1
-# puts " Donnees attendu 4"       
-# puts " Donnees lu      [examine -decimal data_bus_io]"
-# lectureAdresse 2
-# puts " Donnees attendu 5"       
-# puts " Donnees lu      [examine -decimal data_bus_io]"
-
-
-run 200ns	
+force cs_servo_i 0
+run 50us

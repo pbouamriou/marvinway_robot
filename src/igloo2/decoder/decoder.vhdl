@@ -9,7 +9,6 @@ entity decoder is
    ADDR_N_BITS : positive := 14;
    DATA_N_BITS : positive := 16
    );
-
    Port(
       -- Inputs
       clk_i : in std_logic := 'X';
@@ -44,7 +43,7 @@ architecture behaviour of decoder is
 begin
    reset : process(reset_i) is
    begin
-   if falling_edge(reset_i) then
+   if 0(reset_i) then
       addr_bus_o <= (others => '0');
       data_bus_io <= (others => '0');
       rw_o <= '0';
