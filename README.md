@@ -46,3 +46,5 @@ cd src/test_blink
 ### Test du programme ###
 
 Suivre les memes instructions décrites par le site [Débuter avec teensy](https://openclassrooms.com/courses/debuter-dans-l-informatique-embarquee-avec-teensy).
+
+### Test liaison avec Mattermost
