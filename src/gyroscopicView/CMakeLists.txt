@@ -23,8 +23,18 @@ add_definitions(-std=c++11)
 find_package(OpenGL REQUIRED)
 find_package(GLUT REQUIRED)
 find_package(Threads REQUIRED)
+if(THREADS_HAVE_PTHREAD_ARG)
+    target_compile_options(PUBLIC gyroscopicView "-pthread")
+endif()
 include_directories( ${OPENGL_INCLUDE_DIRS}  ${GLUT_INCLUDE_DIRS} ${GLU_INCLUDE_DIRS})
-#pthread is a bad solution it will work only on linux 
-#see http://stackoverflow.com/questions/1620918/cmake-and-libpthread 
-FIND_LIBRARY(SERIAL_LIBRARY serial /usr/local/lib/libserial.so)
-target_link_libraries(gyroscopicView pthread ${SERIAL_LIBRARY} ${OPENGL_LIBRARIES} ${GLUT_LIBRARY} ${GLU_LIBRARY})
+#pthread is a bad solution it will work only on linux
+#see http://stackoverflow.com/questions/1620918/cmake-and-libpthread
+FIND_LIBRARY(SERIAL_LIBRARY serial /tmp/usr/local/lib/libserial.so)
+
+if(CMAKE_THREAD_LIBS_INIT)
+    target_link_libraries(gyroscopicView ${CMAKE_THREAD_LIBS_INIT} ${OPENGL_LIBRARIES} ${GLUT_LIBRARY}
+    ${GLU_LIBRARY})
+else() 
+  target_link_libraries(gyroscopicView ${SERIAL_LIBRARY} ${OPENGL_LIBRARIES} ${GLUT_LIBRARY}
+  ${GLU_LIBRARY})
+endif()

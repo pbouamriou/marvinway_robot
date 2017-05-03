@@ -1,3 +1,0 @@
-[submodule "src/gyroscopicView/serial"]
-	path = src/gyroscopicView/serial
-	url = https://gitlab.42pillistreet.com/Pilli/serial.git
