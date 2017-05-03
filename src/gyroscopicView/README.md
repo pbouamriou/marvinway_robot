@@ -1,6 +1,21 @@
 # gyroscopic view  
 Affiche une vue openGL simple représentant l'orientation du gyroscope en tant réell
 
+## Installation de l'environnement
+
+### Sur Debian
+
+~~~{.sh}
+sudo apt-get install cmake libgl1-mesa-dev libglu1-mesa-dev freeglut3-dev libxmu-dev libxi-dev doxygen libboost-dev python-pip python-empy
+sudo pip install -U catkin_pkg
+git clone https://gicd catkin/thub.com/ros/catkin.git
+cd catkin && mkdir build && cd build && cmake ../ && make && sudo make install && cd ..
+git clone https://github.com/wjwwood/serial.git && cd serial
+make
+make install
+cd ..
+~~~
+
 ## Branchement de la carte Arduino au MPU_6050
 
 ![](schemaMPU6050.png)
@@ -49,6 +64,7 @@ Pensez à appuyer sur le bouton de votre arduino après le "make upload" pour bi
 ## Compilation et lancement l'affichage gyroscopic
 
 ~~~{.sh}
+cmake .
 cd src/gyroscopicView
 make
 cd build/
