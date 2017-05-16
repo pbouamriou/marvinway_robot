@@ -32,6 +32,7 @@
  */
 
 // I2Cdev and MPU6050 must be installed as libraries
+#include "Arduino.h"
 #include "I2Cdev.h"
 #include "MPU6050.h"
 #include "Wire.h"
@@ -53,7 +54,8 @@ int16_t ax, ay, az,gx, gy, gz;
 
 int mean_ax,mean_ay,mean_az,mean_gx,mean_gy,mean_gz,state=0;
 int ax_offset,ay_offset,az_offset,gx_offset,gy_offset,gz_offset;
-
+void meansensors();
+void calibration();
 ///////////////////////////////////   SETUP   ////////////////////////////////////
 void setup() {
   // join I2C bus (I2Cdev library doesn't do this automatically)
