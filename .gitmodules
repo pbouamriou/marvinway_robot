@@ -1,0 +1,9 @@
+[submodule "src/gyroscopicView/serial"]
+	path = src/gyroscopicView/serial
+	url = https://github.com/wjwwood/serial.git
+[submodule "src/test_blink/teensy_cmake"]
+	path = src/test_blink/teensy_cmake
+	url = git@gitlab.42pillistreet.com:marvin/teensy_cmake.git
+[submodule "src/cmake"]
+	path = src/cmake
+	url = git@gitlab.42pillistreet.com:marvin/teensy_cmake.git
