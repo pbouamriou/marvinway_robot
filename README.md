@@ -1,48 +1,32 @@
 # marvinway
 Source du projet Marvin Way (le segway depressif O_o)
 
-## Programme de test ##
+## Arborescence ##
 
-### Installation de la chaine de compilation Teensy ###
+### brain ###
 
-Suivre les instructions [Débuter avec teensy](https://openclassrooms.com/courses/debuter-dans-l-informatique-embarquee-avec-teensy).
+Projet de la carte de contrôle Haut niveau de Marvin
 
-Installer tout de meme la toolchain Arduino dans le répertoire /opt car ça permettra à cmake de trouver automatiquement la toolchain.
+### control
 
-### Installation de teensy_loader_cli
+Projet pour la carte de contrôle des moteurs
 
-Pour permettre à cmake d'installer votre programme sur la teensy
+### docs
 
-Executez simplement les commandes suivantes depuis le dépot marvin
+Contient la documentation globale du projet
 
-_Installation de teensy_loader_cli
-~~~{.sh}
-cd src/teensyLoaderCli/
-chmod 755 teensyLoaderCli.sh # si nécéssaire
-./teensyLoaderCli.sh
-~~~
+### experience
 
-### Compilation ###
+Contient les exemples des expériences associés au projet marvinway
 
-_Compilation du programme de test blink sous linux_
+### meca
 
-~~~{.sh}
-cd src/test_blink
-./configure
-(cd build && cmake )
-~~~
+Contient la conception mecanique de Marvin
 
-Voila c'est compilé, un fichier blink.hex est disponible sous build/blink
+### shield
 
-il est meme possible de produire et installer le programme grâce à cmake (programme test_blink par example) :
+Projet permettant la communication entre le Brain et le reste du monde (la moelle epinière en soit)
 
-~~~{.sh}
-cd src/test_blink
-./configure
-(cd build && cmake blink-upload )
-~~~
+### supply
 
-
-### Test du programme ###
-
-Suivre les memes instructions décrites par le site [Débuter avec teensy](https://openclassrooms.com/courses/debuter-dans-l-informatique-embarquee-avec-teensy).
+Projet de gestion de l'alimentation
