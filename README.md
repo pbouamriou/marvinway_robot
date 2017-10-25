@@ -1,4 +1,4 @@
-# marvinway
+﻿# marvinway
 Source du projet Marvin Way (le segway depressif O_o)
 
 ## Arborescence ##
@@ -30,3 +30,7 @@ Projet permettant la communication entre le Brain et le reste du monde (la moell
 ### supply
 
 Projet de gestion de l'alimentation
+
+### utils
+
+Contient des librairies utils ou des ensembles de configurations
