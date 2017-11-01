@@ -353,9 +353,88 @@ Le \textbf{stator} est composé de deux ou plus de bobines fixées à la carcass
 
 \section{NE555}
 
+\section{Pont En H}
+
+\subsection{Principe de fonctionnement}
+Le Pont en H est un circuit qui permet de piloter la vitesse et changer le sens de rotation d'un
+moteur. Le pont en H va permettre d'inverser le sens du courant qui traverse un moteur permettant
+ainsi de changer son sens de rotation ou d'ajuster la quantité de courant le traversant permettant
+ainsi d'ajuster sa vitesse.
+
+\begin{figure}[!h]
+   \begin{minipage}[c]{.33\linewidth}
+      \centering
+      \includegraphics[width=4cm]{images/pontH1}
+      \caption{\label{pontH1} Pont en H simple}
+   \end{minipage}
+   \begin{minipage}[c]{.33\linewidth}
+      \centering
+      \includegraphics[width=4cm]{images/pontH2}
+      \caption{\label{pontH2} Pont H sens 1}
+   \end{minipage}
+   \begin{minipage}[c]{.33\linewidth}
+       \centering
+       \includegraphics[width=4cm]{images/pontH3}
+       \caption{\label{pontH3} Pont H sens2}
+   \end{minipage}
+\end{figure}
+
+Dans la figure~\ref{pontH1} on retrouve un pont en H réaliser à partir de simple interrupteurs. Si
+S1 et S4 (\ref{pontH2}) sont fermé en même temps le courant va parcourir le moteur dans un sens. Si S2
+et S3 \ref{pontH3} sont fermé le courant va parcourir le moteur dans le sens inverse.
+
+On peut aussi courcircuiter le moteur pour créer un phénomène de frein magnétique. Le moteur va
+génerer être freiner par le courant qu'il va générer lui même. 
+
+\begin{figure}[!h]
+   \begin{minipage}[c]{.50\linewidth}
+      \centering
+      \includegraphics[width=4cm]{images/pontH4}
+      \caption{\label{pontH4} Frein magnétique S1,S2}
+   \end{minipage}
+   \begin{minipage}[c]{.50\linewidth}
+      \centering
+      \includegraphics[width=4cm]{images/pontH5}
+      \caption{\label{pontH5} Frein magnétique S3,S4}
+   \end{minipage}
+\end{figure}
+
+Un pont En H réel n'est pas fait à partir d'interrupteur mais de transistor. Il faut savoir que
+lorsque le moteur ne sera pas alimenté il va génerer un courant dit de "roue libre". Ce courant peut
+abimer les transistors dans ce cas il faut le protéger pour cela on va utiliser des diodes de roues
+libres.
+
+\begin{figure}[!h]
+   \centering
+   \includegraphics[width=4cm]{images/pontHDiodes}
+   \caption{\label{pontH4} Diode de roue libre}
+\end{figure}
+
+Ainsi lorsque le moteur n'est pas alimenté le courant généré par le moteur passera dans les diodes
+de roues libres	et non dans les transistors. Ce qui permet de les préserver.
+
+\subsection{Conception Naive}
+
+Afin de mieux apréhender le fonctionnement d'un pont en H j'ai réalisé un premier prototypes sans
+utiliser un composant tout fait tel un L298
+
+Ajouter photo proteus
+
+À l'aide du logiciel de simulation Proteus et plusieurs prototype j'en suis arrivé au résultat
+suivant : 
+
+Puis j'ai réalisé ce prototype sur une petite carte en bakélite
+
+Ajouter photo
+
+\subsection{Conception d'un vrai Circuit de control Moteur}
 
 \cite{MoteurCCEskimon}
 \bibliographystyle{plain}
 \bibliography{elec}
+
+http://eskimon.fr/285-arduino-601-le-moteur-courant-continu
+http://ancrobot.free.fr/Old_version/fichtech/action/ponth/index.htm
+http://ancrobot.free.fr/Old_version/fichtech/action/ponthII/index.htm
 
 \end{document}
