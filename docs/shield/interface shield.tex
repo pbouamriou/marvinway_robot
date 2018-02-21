@@ -1,0 +1,82 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[francais]{babel}
+\usepackage{bytefield}
+
+\begin{document}
+
+\title{Interface MarvinShield}
+
+\section{Introduction}
+
+Le FPGA est piloté en SPI.
+
+
+\section{Commandes}
+
+Il existe deux types de commandes :
+\begin{itemize}
+  \item une commande de lecture d'une zone mémoire,
+  \item une commande d'écriture d'une zone mémoire. 
+\end{itemize}
+
+La figure suivante présente le chronogramme d'une phase de lecture.
+
+La figure suivante présente le chronogramme d'une phase d'écriture.
+
+\subsection{Organisation mémoire}
+
+La carte MarvinShield organise la mémoire de la manière suivante : \\
+
+\begin{bytefield}[endianness=big, bitwidth=1em, leftcurly=., leftcurlyspace=0pt]{32}
+\bitheader{0,7,8,15,16,23,24,31} \\
+\begin{leftwordgroup}{00h}
+\bitbox{32}{FPGA Magic ID}
+\end{leftwordgroup} \\
+\begin{rightwordgroup}{Version}
+\begin{leftwordgroup}{04h}
+\bitbox{8}{Reserved} \bitbox{8}{Majeur} \bitbox{8}{Mineur} 
+& \bitbox{8}{Revision}
+\end{leftwordgroup}
+\end{rightwordgroup} \\
+\begin{leftwordgroup}{08h}
+\wordbox[tlr]{1}{}
+\end{leftwordgroup} \\
+\wordbox[lr]{2}{FPGA Desc} 	\\
+\wordbox[blr]{1}{} \\
+\begin{rightwordgroup}{Capabilities}	
+\begin{leftwordgroup}{18h}
+\bitbox{16}{Capability (1)} \bitbox{16}{Capability (2)}
+\end{leftwordgroup} \\
+\wordbox{6}{$\cdots$} \\
+\begin{leftwordgroup}{38h}
+\bitbox{16}{Capability (15)} \bitbox{16}{Capability (16)}
+\end{leftwordgroup}
+\end{rightwordgroup} \\
+\begin{leftwordgroup}{3Ch}
+\wordbox{1}{First device address}
+\end{leftwordgroup}
+\end{bytefield}
+
+Tous les champs
+Le champ "FPGA Magic ID" est toujours positionné par la shield  
+
+\subsection{Capacités du FPGA}
+
+\begin{bytefield}[endianness=little,bitwidth=2.2em]{16}
+\bitheader{0-15} \\ 
+\bitbox{3}{device ID} \bitbox{3}{device version} \bitbox{10}{Offset in memory} \\
+\end{bytefield}
+
+La liste des différents périphériques sont :
+\begin{itemize}
+\item PWM, valeur 01h
+\item ADC, valeur 02h
+\item GPIO, valeur 03h
+\end{itemize}
+
+Le champ "Offset in memory" défini l'adressage du périphérique à partir de l'adresse 3Ch.
+
+
+\end{document}

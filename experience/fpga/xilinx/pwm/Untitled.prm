@@ -1,0 +1,17 @@
+PROMGEN: Xilinx Prom Generator P.20131013
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+
+promgen -w -p mcs -c FF -o /home/philippe/Dev/marvinway/experience/fpga/xilinx/pwm//Untitled -s 4096 -u 0000 /home/philippe/Dev/marvinway/experience/fpga/xilinx/pwm/top.bit -spi 
+
+PROM /home/philippe/Dev/marvinway/experience/fpga/xilinx/pwm/Untitled.prm map: Fri Dec 22 19:21:30 2017
+
+Calculating PROM checksum with fill value ff
+
+Format        Mcs86 (32-bit)
+Size          4096K
+PROM start    0000:0000
+PROM end      003f:ffff
+PROM checksum 3a9db254
+
+        Addr1        Addr2                     Date File(s)
+    0000:0000    0005:327b     Dec 22 19:20:57 2017 /home/philippe/Dev/marvinway/experience/fpga/xilinx/pwm/top.bit

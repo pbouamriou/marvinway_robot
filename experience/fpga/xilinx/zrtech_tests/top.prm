@@ -1,0 +1,17 @@
+PROMGEN: Xilinx Prom Generator P.20131013
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+
+promgen -w -p mcs -c FF -o /home/philippe/Dev/marvinway/experience/fpga/xilinx/zrtech_tests//top -s 4096 -u 0000 /home/philippe/Dev/marvinway/experience/fpga/xilinx/zrtech_tests/leds.bit -spi 
+
+PROM /home/philippe/Dev/marvinway/experience/fpga/xilinx/zrtech_tests/top.prm map: Tue Jun  6 08:35:49 2017
+
+Calculating PROM checksum with fill value ff
+
+Format        Mcs86 (32-bit)
+Size          4096K
+PROM start    0000:0000
+PROM end      003f:ffff
+PROM checksum 3a970fed
+
+        Addr1        Addr2                     Date File(s)
+    0000:0000    0005:327b     Jun  6 08:32:51 2017 /home/philippe/Dev/marvinway/experience/fpga/xilinx/zrtech_tests/leds.bit
